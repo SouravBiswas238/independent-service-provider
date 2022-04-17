@@ -11,7 +11,7 @@ const Services = () => {
             .then(data => setServices(data.splice(3)))
     }, []);
     return (
-        <div className='bg-light'>
+        <div id="services" className='bg-light'>
             <h1 className='text-center f-bold text-dark  m-0 pt-3 mb-0
             '>WHAT WE OFFER</h1>
             <p className='text-danger text-center'>Our Services</p>

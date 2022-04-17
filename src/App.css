@@ -32,7 +32,22 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .w-sm-100 {
+    width: 100% !important;
+  }
+
+  .fs-sm-7 {
+    font-size: 15px !important;
+  }
+
+  .h-100 {
+    height: 400px !important;
   }
 }

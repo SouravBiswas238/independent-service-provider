@@ -1,10 +1,27 @@
 import React from 'react';
+import { ListGroup } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <div className='text-center border-1 bg-success'>
-            copyright @ 2022
-        </div>
+
+        <footer className="fixed-bottom d-flex justify-content-between mx-5">
+            {/* <div className="">
+                <span className="text-muted">© 2021 Company, Inc</span>
+            </div>
+
+            <div className="nav d-flex text-muted">
+                <span className="mx-1">Facebook</span>
+                <span className="mx-1">Facebook</span>
+                <span className="mx-1">Facebook</span>
+
+
+
+            </div > */}
+
+
+        </footer >
+
     );
 };
 
