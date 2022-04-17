@@ -1,50 +1,102 @@
-import React from 'react';
+import { confirmPasswordReset } from 'firebase/auth';
+import React, { useRef, useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import googleIcon from '../../image/Google-Icon-PNG-768x768.png';
 
 const SingUp = () => {
-
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
     const navigate = useNavigate();
+
+    console.log(user);
+
+    const nameRef = useRef('');
+    const emailRef = useRef('');
+    const passwordRef = useRef('');
+    const comfimPasswordRef = useRef('');
+    const [password, setPassword] = useState('');
+    const [comfimPassword, setComfimPassword] = useState('');
+
+
+
+    const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
+
+    let errorPass;
+    const handelErrorPassword = () => {
+        errorPass =
+            <p className='text-danger' >Password did not matched</p>
+    }
+    if (password !== comfimPassword) {
+        handelErrorPassword();
+
+    }
+
+
     let errorElement;
-    if (error) {
+    if (error1 || error) {
         errorElement =
             <div>
                 <p className='text-danger' >Error: {error.message}</p>
             </div>
+    }
 
-    }
-    if (user) {
-        navigate('/home');
-    }
     const navigateLogin = event => {
         navigate('/login');
+    }
 
+
+    const handeCreateUser = event => {
+        event.preventDefault();
+        const name = nameRef.current.value;
+        const email = emailRef.current.value;
+        setPassword(passwordRef.current.value);
+        setComfimPassword(comfimPasswordRef.current.value);
+
+        if (password !== comfimPassword) {
+            handelErrorPassword();
+            return;
+        }
+        createUserWithEmailAndPassword(email, password);
+    }
+
+    if (user) {
+        navigate('/home');
     }
     return (
         <div className='m-auto text-center p-4'>
 
-            <Form className='w-50 w-sm-100  m-auto'>
+            <Form onSubmit={handeCreateUser} className='w-50 w-sm-100  m-auto'>
                 <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
 
                     <Col>
-                        <Form.Control type="email" placeholder="Email" />
+                        <Form.Control ref={nameRef} type="text" placeholder="Your Name" />
                     </Col>
                 </Form.Group>
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+
+                    <Col>
+                        <Form.Control ref={emailRef} type="email" placeholder="Email" required />
+                    </Col>
+                </Form.Group>
+                {errorPass}
                 <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
 
                     <Col>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
                     </Col>
                 </Form.Group>
                 <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
 
 
                     <Col >
-                        <Form.Control type="password" placeholder="Confirm Password" />
+                        <Form.Control ref={comfimPasswordRef} type="password" placeholder="Confirm Password" required />
                     </Col>
                 </Form.Group>
                 {errorElement}
@@ -64,10 +116,8 @@ const SingUp = () => {
             <p>Already Have an account <span role="button" className='text-danger pointer button' onClick={navigateLogin}>Login</span></p>
 
             <div className='continue-google-button '>
-
                 <button className='w-25  w-sm-100'
                     onClick={() => signInWithGoogle()}>
-
                     <img src={googleIcon} alt="google-img" />
                     <span className='ms-1'>Continue with Google</span>
                 </button>

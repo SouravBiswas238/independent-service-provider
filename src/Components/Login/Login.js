@@ -2,37 +2,50 @@ import React, { useRef } from 'react';
 import { Col, Form, Row, Button } from 'react-bootstrap';
 import './Login.css';
 import googleIcon from '../../image/Google-Icon-PNG-768x768.png';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
+    const navigate = useNavigate();
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
     const emailRef = useRef('');
     const passwordRef = useRef('');
+    const location = useLocation();
+
+    let form = location.state?.from?.pathname || "/";
+
     const handelSubmit = event => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        console.log(email, password)
+
+        signInWithEmailAndPassword(email, password);
     }
 
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-    const navigate = useNavigate();
+
+    const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
     let errorElement;
-    if (error) {
+    if (error || error1) {
         errorElement =
             <div>
                 <p className='text-danger' >Error: {error.message}</p>
             </div>
 
     }
-    if (user) {
-        navigate('/home')
+    if (user || user1) {
+        navigate(form, { replace: true });
     }
     const navigateRegister = (event) => {
         navigate('/signup');
     }
+
     return (
         <div className='m-auto text-center p-4'>
 

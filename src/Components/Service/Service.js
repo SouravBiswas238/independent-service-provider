@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Service = (props) => {
     const { name, about, picture } = props.service;
@@ -13,7 +14,9 @@ const Service = (props) => {
                 </Card.Text>
             </Card.Body>
             <Card.Footer className='text-center border-0'>
-                <button className='border-0 text-primary rounded bg-transparent'>Read more about</button>
+                <Link to="/checkout">
+                    <button className='border-0 text-primary rounded bg-transparent'>Preceed Checkout</button>
+                </Link>
             </Card.Footer>
         </Card>
 

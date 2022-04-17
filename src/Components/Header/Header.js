@@ -1,12 +1,18 @@
 import { Offcanvas } from 'bootstrap';
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { Button, Container, Form, FormControl, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 import './Header.css';
 
 const Header = () => {
-    const handelToggleNavbar = () => {
-        console.log("none")
+    const [user] = useAuthState(auth);
+
+    const handelSignout = () => {
+
+        signOut(auth);
     }
     return (
 
@@ -22,13 +28,17 @@ const Header = () => {
                         <Nav className="me-auto text-uppercase">
                             <Nav.Link as={Link} to="/home">Home</Nav.Link>
                             <Nav.Link as={Link} to="home#services">Services</Nav.Link>
-                            <Nav.Link as={Link} to="/protected">Checkout</Nav.Link>
+                            <Nav.Link as={Link} to="/checkout">Checkout</Nav.Link>
                             <Nav.Link as={Link} to="/about">About</Nav.Link>
                             <Nav.Link as={Link} to="/blogs">Blogs</Nav.Link>
                         </Nav>
                         <Nav className="align-items-end">
                             <Nav.Item>
-                                <Nav.Link eventKey="link-1" href="/login">Log In</Nav.Link>
+                                {
+
+                                    user ? <Nav.Link onClick={handelSignout} eventKey="link-1">Sign Out</Nav.Link> : <Nav.Link eventKey=" link-1" href="/login">Log In</Nav.Link>
+                                }
+
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link eventKey="link-2" href="/signup" >Create An account</Nav.Link>
