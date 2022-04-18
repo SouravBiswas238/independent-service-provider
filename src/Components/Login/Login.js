@@ -2,9 +2,13 @@ import React, { useRef } from 'react';
 import { Col, Form, Row, Button } from 'react-bootstrap';
 import './Login.css';
 import googleIcon from '../../image/Google-Icon-PNG-768x768.png';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle, useUpdatePassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Loading from '../Loading/Loading';
+import { sendPasswordResetEmail } from 'firebase/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
@@ -15,6 +19,10 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail, resetPasswordSending, error2] = useSendPasswordResetEmail(
+        auth
+    );
+
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const location = useLocation();
@@ -30,20 +38,33 @@ const Login = () => {
     }
 
 
-    const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, user1, sending, error1] = useSignInWithGoogle(auth);
     let errorElement;
+    if (loading || sending) {
+        return <Loading></Loading>
+    }
     if (error || error1) {
         errorElement =
             <div>
                 <p className='text-danger' >Error: {error?.message}</p>
             </div>
-
     }
     if (user || user1) {
         navigate(form, { replace: true });
     }
     const navigateRegister = (event) => {
         navigate('/signup');
+    }
+    const resetPassword = async () => {
+        const email = emailRef.current.value;
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('Send Email')
+        }
+        else {
+            toast('Please Enter Your Email address.')
+        }
+
     }
 
     return (
@@ -79,8 +100,10 @@ const Login = () => {
                         <div className='row-border-box'></div>
                     </div>
                 </Form.Group>
+                <ToastContainer />
             </Form>
-            <p>New to Sourav Fitness <span role="button" className='text-danger pointer button' onClick={navigateRegister}>Please register</span></p>
+            <p>New to Sourav Fitness <span role="button" className='text-primary pointer button' onClick={navigateRegister}>Please register</span></p>
+            <p>Forget Password? <span role="button" className='text-primary pointer button' onClick={resetPassword}>Reset Password</span></p>
 
 
             <div className='continue-google-button '>

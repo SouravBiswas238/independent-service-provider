@@ -1,10 +1,11 @@
 import { confirmPasswordReset } from 'firebase/auth';
 import React, { useRef, useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import googleIcon from '../../image/Google-Icon-PNG-768x768.png';
+import Loading from '../Loading/Loading';
 
 const SingUp = () => {
     const [
@@ -12,10 +13,10 @@ const SingUp = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
     const navigate = useNavigate();
-
-
     const nameRef = useRef('');
     const emailRef = useRef('');
     const passwordRef = useRef('');
@@ -25,7 +26,7 @@ const SingUp = () => {
 
 
 
-    const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, user1, sending, error1] = useSignInWithGoogle(auth);
 
     let errorPass;
     const handelErrorPassword = () => {
@@ -37,8 +38,6 @@ const SingUp = () => {
 
     }
 
-
-
     let errorElement;
     if (error1 || error) {
         errorElement =
@@ -49,6 +48,9 @@ const SingUp = () => {
     const location = useLocation();
     let form = location.state?.from?.pathname || "/";
 
+    if (loading || sending) {
+        return <Loading></Loading>
+    }
     if (user1 || user) {
         navigate(form, { replace: true });
 
@@ -59,7 +61,7 @@ const SingUp = () => {
     }
 
 
-    const handeCreateUser = event => {
+    const handeCreateUser = async (event) => {
         event.preventDefault();
         const name = nameRef.current.value;
         const email = emailRef.current.value;
@@ -70,7 +72,9 @@ const SingUp = () => {
             handelErrorPassword();
             return;
         }
-        createUserWithEmailAndPassword(email, password);
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name });
+        console.log('updating profile')
     }
 
 

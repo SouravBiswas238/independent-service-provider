@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import profile from '../../image/Sourav.png'
+// import profile from '../../image/sourav1.png'
+import profile from '../../image/sourav1.jpg'
 
 const About = () => {
     return (

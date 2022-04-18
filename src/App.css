@@ -38,6 +38,11 @@
   }
 }
 
+.w-10 {
+  width: 25px;
+  height: 25px;
+}
+
 @media only screen and (max-width: 600px) {
   .w-sm-100 {
     width: 100% !important;

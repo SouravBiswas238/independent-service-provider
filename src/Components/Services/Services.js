@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { CardGroup } from 'react-bootstrap';
+import useServices from '../../hooks/useServices';
 import Service from '../Service/Service';
 
 const Services = () => {
-    const [services, setServices] = useState([]);
+    const [services, setServices] = useServices();
 
-    useEffect(() => {
-        fetch('fakeData.json')
-            .then(res => res.json())
-            .then(data => setServices(data.splice(3)))
-    }, []);
+
     return (
         <div id="services" className='bg-light'>
             <h1 className='text-center f-bold text-dark  m-0 pt-3 mb-0
@@ -19,7 +16,7 @@ const Services = () => {
 
                 {
                     services.map(service => <Service
-                        key={service.id}
+                        key={service._id}
                         service={service}
                     ></Service>)
                 }

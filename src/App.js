@@ -10,6 +10,7 @@ import SingUp from './Components/SingUp/SingUp';
 import NotFound from './Components/NotFound/NotFound';
 import RequreAuth from './Components/RequireAuth/RequreAuth';
 import CheckOut from './Components/CheckOut/CheckOut';
+import Blog from './Components/Blog/Blog';
 
 function App() {
   return (
@@ -25,8 +26,16 @@ function App() {
               <CheckOut></CheckOut>
             </RequreAuth>
           }></Route>
+        <Route path='/checkout/:checkoutId'
+          element={
+            <RequreAuth>
+              <CheckOut></CheckOut>
+            </RequreAuth>
+          }></Route>
 
         <Route path="/about" element={<About></About>}></Route>
+        <Route path="/blogs" element={<Blog></Blog>}></Route>
+
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<SingUp></SingUp>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
