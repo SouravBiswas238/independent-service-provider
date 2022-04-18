@@ -1,4 +1,4 @@
-## Name of the Website   ### Sourav Fitness
+## Name of the Website   (Sourav Fitness) 
 
 ## click here for live site (https://sourav-fitness-9eac5.web.app/)
 

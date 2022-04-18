@@ -4,7 +4,7 @@ import { Col, Container, ListGroup, Row } from 'react-bootstrap';
 const Blog = () => {
     return (
         <div>
-            <Container>
+            <Container className='mt-2'>
 
 
                 <Row>
