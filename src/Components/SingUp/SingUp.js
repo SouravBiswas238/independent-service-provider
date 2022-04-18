@@ -1,7 +1,7 @@
 import { confirmPasswordReset } from 'firebase/auth';
 import React, { useRef, useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import googleIcon from '../../image/Google-Icon-PNG-768x768.png';
@@ -15,6 +15,9 @@ const SingUp = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const [sendEmailVerification, varificationSending, verificationError] = useSendEmailVerification(
+        auth
+    );
 
     const navigate = useNavigate();
     const nameRef = useRef('');
@@ -26,7 +29,7 @@ const SingUp = () => {
 
 
 
-    const [signInWithGoogle, user1, sending, error1] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, user1, sending, googleSingInError] = useSignInWithGoogle(auth);
 
     let errorPass;
     const handelErrorPassword = () => {
@@ -39,7 +42,7 @@ const SingUp = () => {
     }
 
     let errorElement;
-    if (error1 || error) {
+    if (googleSingInError || error) {
         errorElement =
             <div>
                 <p className='text-danger' >Error: {error?.message}</p>
@@ -74,7 +77,7 @@ const SingUp = () => {
         }
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
-        console.log('updating profile')
+        await sendEmailVerification();
     }
 
 
