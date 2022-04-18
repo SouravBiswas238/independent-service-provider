@@ -1,7 +1,6 @@
-import { Offcanvas } from 'bootstrap';
 import { signOut } from 'firebase/auth';
 import React from 'react';
-import { Button, Container, Form, FormControl, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -16,7 +15,7 @@ const Header = () => {
     return (
 
         <>
-            <Navbar bg="dark" expand="lg" variant="dark">
+            <Navbar bg="dark" expand="lg" variant="dark" className='sticky-top'>
                 <Container>
                     <Navbar.Brand className='logo-box' as={Link} to="/"><img className='logo-width' src="https://static.wixstatic.com/media/0ff3a1_6f888dba03a64a839ced071c960cc39d~mv2.png/v1/fill/w_228,h_172,al_c,usm_0.66_1.00_0.01,enc_auto/logo.png" alt="" /></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
