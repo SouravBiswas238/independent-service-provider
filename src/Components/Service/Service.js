@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Service = (props) => {
-    const { name, about, picture } = props.service;
+    const { name, about, picture, prize } = props.service;
     return (
         <Card className='m-3'>
             <Card.Img variant="top" src={picture} />
@@ -13,9 +13,10 @@ const Service = (props) => {
                     {about}
                 </Card.Text>
             </Card.Body>
-            <Card.Footer className='text-center border-0'>
+            <Card.Footer className='text-center border-0 d-flex justify-content-evenly'>
+                <span className='text-warning fw-bold'>{prize}</span>
                 <Link to="/checkout">
-                    <button className='border-0 text-primary rounded bg-transparent'>Preceed Checkout</button>
+                    <button className='border-1 border-light text-primary rounded bg-transparent'>Preceed Checkout</button>
                 </Link>
             </Card.Footer>
         </Card>

@@ -2,37 +2,43 @@
     {
         "_id": "625b17852bfb5324ce68aa18",
         "picture": "https://img.freepik.com/free-photo/athletic-man-woman-with-dumbbells_155003-11801.jpg?t=st=1650138206~exp=1650138806~hmac=5858c04f5c3dc1af14ac1c6f13c3316bb43478c1d1f4d60f9f049c9fa64d0888&w=1060",
-        "name": "WEIGHT LOSS",
-        "about": "Consequat sunt sit ipsum irure dolore exercitation. Elit quis anim officia voluptate proident. Nulla nulla duis voluptate id. Nulla proident voluptate irure anim adipisicing enim dolor est dolore dolor officia anim occaecat. Laborum eiusmod ea officia in. Ipsum magna et eiusmod ea mollit.\r\n"
+        "name": "Sourav MOBILITY",
+        "prize": "34$",
+        "about": "Life is guaranteed to bring a full range of aches and pains that can negatively impact your quality of life and ability to move and sleep comfortably. Our Mobility Specialists and Athletic Therapists can help improve your range of motion, posture, increase muscle function and reduce pain.\r\n"
     },
     {
         "_id": "625b1785598349ab66e1ddda",
         "picture": "https://img.freepik.com/free-photo/athletic-man-woman-with-dumbbells_155003-11801.jpg?t=st=1650138206~exp=1650138806~hmac=5858c04f5c3dc1af14ac1c6f13c3316bb43478c1d1f4d60f9f049c9fa64d0888&w=1060",
         "name": "Home Traning",
+        "prize": "30$",
         "about": "Ut qui pariatur do deserunt sit do fugiat amet nostrud pariatur. Laboris irure cupidatat cillum eu dolor aliqua voluptate esse in id. Ut sunt ad anim dolore officia. Laborum pariatur consectetur ipsum nulla veniam exercitation consectetur cillum. Consectetur Lorem Lorem exercitation minim do aute enim ut voluptate enim.\r\n"
     },
     {
         "_id": "625b1785abbf24e6526a3a3a",
         "picture": "https://img.freepik.com/free-photo/athletic-man-woman-with-dumbbells_155003-11801.jpg?t=st=1650138206~exp=1650138806~hmac=5858c04f5c3dc1af14ac1c6f13c3316bb43478c1d1f4d60f9f049c9fa64d0888&w=1060",
-        "name": "WEIGHT LOSS",
+        "name": "NUTRITION",
+        "prize": "24$",
         "about": "Labore nisi enim duis veniam id mollit aliquip voluptate. Id consectetur veniam labore ipsum. Ullamco cupidatat fugiat culpa irure elit esse occaecat anim. Sint sit ut nulla velit esse duis fugiat fugiat sunt proident dolor cupidatat irure laborum. Quis quis aute sint eiusmod culpa ullamco ipsum cupidatat aliquip. Voluptate tempor nisi tempor culpa.\r\n"
     },
     {
         "_id": "625b1785b6ecf016dc302817",
-        "picture": "https://img.freepik.com/free-photo/athletic-man-woman-with-dumbbells_155003-11801.jpg?t=st=1650138206~exp=1650138806~hmac=5858c04f5c3dc1af14ac1c6f13c3316bb43478c1d1f4d60f9f049c9fa64d0888&w=1060",
+        "picture": "https://img.freepik.com/free-photo/happy-bearded-fitness-man-measuring-his-waist-with-tape_171337-15817.jpg?t=st=1650249505~exp=1650250105~hmac=afb35a1abe5041b6ff6f4cdf3bd9326caa52adb6cfa7e055a3ac28cca288a58a&w=1060",
         "name": "WEIGHT LOSS",
-        "about": "Deserunt irure sunt Lorem laboris aliquip quis. Amet non eiusmod eiusmod magna velit adipisicing. Elit amet ex tempor duis anim ea adipisicing irure ad quis quis officia.\r\n"
+        "prize": "34$",
+        "about": "It's more than just a workout. I will allow you to experience the benefits of working with a Personal Trainer in an energetic and motivating . I will lead dynamic workouts individually targeted to your fitness needs, allowing you to minimize time & maximize results.\r\n"
     },
     {
         "_id": "625b1785d1940fc2a1aa8b37",
         "picture": "https://img.freepik.com/free-photo/athletic-man-woman-with-dumbbells_155003-11801.jpg?t=st=1650138206~exp=1650138806~hmac=5858c04f5c3dc1af14ac1c6f13c3316bb43478c1d1f4d60f9f049c9fa64d0888&w=1060",
         "name": "PERSONAL TRAINING",
-        "about": "Aute dolore ipsum velit voluptate exercitation elit sit irure. Duis in aliqua cupidatat nostrud sit non enim quis id sunt proident. Nisi eiusmod anim laboris reprehenderit occaecat. Consequat laboris ipsum exercitation amet eu labore tempor enim labore. Ipsum ad quis nostrud sunt ut. Adipisicing do laborum dolore adipisicing commodo nostrud duis est anim et quis incididunt dolore. Amet ea velit et sint officia ea ea.\r\n"
+        "prize": "60$",
+        "about": "I will lead dynamic workouts individually targeted to your fitness needs, allowing you to minimize time & maximize results. No matter the budget or goals we have a coach for you..\r\n"
     },
     {
         "_id": "625b1785977cc20cd8aa8204",
-        "picture": "https://img.freepik.com/free-photo/athletic-man-woman-with-dumbbells_155003-11801.jpg?t=st=1650138206~exp=1650138806~hmac=5858c04f5c3dc1af14ac1c6f13c3316bb43478c1d1f4d60f9f049c9fa64d0888&w=1060",
-        "name": "EXERCISE PROGRAMING",
-        "about": "Nostrud consequat sunt commodo aliquip. Veniam id sint eu occaecat aliqua do enim reprehenderit adipisicing ex qui non est. Aliquip nisi eiusmod ea non sunt dolor sunt veniam sunt ad ex sunt. Mollit amet mollit Lorem sunt fugiat deserunt fugiat ullamco. Eiusmod magna quis tempor officia do excepteur ea qui. Commodo nisi non mollit minim dolor laborum mollit id aliquip et.\r\n"
+        "picture": "https://img.freepik.com/free-photo/fit-woman-doing-yoga-plank-watching-online-tutorials-training-living-room-stay-home-life-style_1421-4620.jpg?w=1060",
+        "name": "VIRTUAL TRAINING",
+        "prize": "24$",
+        "about": "Personal trainer anywhere, any time. Whether your goal is to lose weight, gain strength, improve your fitness or mobility, get personalize coaching and training delivered directly to you through our live on-line training sessions..\r\n"
     }
 ]

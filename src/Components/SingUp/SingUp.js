@@ -2,7 +2,7 @@ import { confirmPasswordReset } from 'firebase/auth';
 import React, { useRef, useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import googleIcon from '../../image/Google-Icon-PNG-768x768.png';
 
@@ -15,7 +15,6 @@ const SingUp = () => {
     ] = useCreateUserWithEmailAndPassword(auth);
     const navigate = useNavigate();
 
-    console.log(user);
 
     const nameRef = useRef('');
     const emailRef = useRef('');
@@ -39,12 +38,20 @@ const SingUp = () => {
     }
 
 
+
     let errorElement;
     if (error1 || error) {
         errorElement =
             <div>
-                <p className='text-danger' >Error: {error.message}</p>
+                <p className='text-danger' >Error: {error?.message}</p>
             </div>
+    }
+    const location = useLocation();
+    let form = location.state?.from?.pathname || "/";
+
+    if (user1 || user) {
+        navigate(form, { replace: true });
+
     }
 
     const navigateLogin = event => {
@@ -66,15 +73,12 @@ const SingUp = () => {
         createUserWithEmailAndPassword(email, password);
     }
 
-    if (user) {
-        navigate('/home');
-    }
+
     return (
         <div className='m-auto text-center p-4'>
 
             <Form onSubmit={handeCreateUser} className='w-50 w-sm-100  m-auto'>
-                <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
-
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalNAme">
                     <Col>
                         <Form.Control ref={nameRef} type="text" placeholder="Your Name" />
                     </Col>
@@ -92,7 +96,7 @@ const SingUp = () => {
                         <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
                     </Col>
                 </Form.Group>
-                <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalConfirmPassword">
 
 
                     <Col >
